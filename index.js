@@ -1,13 +1,12 @@
-var Symbol = require('@riim/symbol-polyfill');
-
 var global = Function('return this;')();
+var Symbol = typeof require != 'undefined' ? require('@riim/symbol-polyfill') : global.Symbol;
+
 var hasOwn = Object.prototype.hasOwnProperty;
 
 var KEY_MAP_ID = Symbol('map-id');
 var mapIdCounter = 0;
 
 var Map = global.Map;
-var Set = global.Set;
 
 if (!Map || Map.toString().indexOf('[native code]') == -1 || !new Map([[1, 1]]).size) {
 	var entryStub = {
@@ -234,7 +233,15 @@ if (!Map || Map.toString().indexOf('[native code]') == -1 || !new Map([[1, 1]]).
 			};
 		};
 	});
+}
 
+if (!Map.prototype[Symbol.iterator]) {
+	Map.prototype[Symbol.iterator] = Map.prototype.entries;
+}
+
+var Set = global.Set;
+
+if (!Set || Set.toString().indexOf('[native code]') == -1 || !new Set([1]).size) {
 	Set = function Set(values) {
 		this._values = new Map(values.map(function(value) {
 			return [value, value];
@@ -280,10 +287,6 @@ if (!Map || Map.toString().indexOf('[native code]') == -1 || !new Map([[1, 1]]).
 		values: Map.prototype.values,
 		entries: Map.prototype.entries
 	};
-}
-
-if (!Map.prototype[Symbol.iterator]) {
-	Map.prototype[Symbol.iterator] = Map.prototype.entries;
 }
 
 if (!Set.prototype[Symbol.iterator]) {
