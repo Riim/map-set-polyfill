@@ -1,5 +1,5 @@
 var global = Function('return this;')();
-var Symbol = typeof require != 'undefined' ? require('@riim/symbol-polyfill') : global.Symbol;
+var Symbol = typeof require != 'undefined' ? require('@riim/symbol-polyfill').Symbol : global.Symbol;
 
 var hasOwn = Object.prototype.hasOwnProperty;
 
@@ -297,6 +297,6 @@ if (typeof module != 'undefined') {
 	exports.Map = Map;
 	exports.Set = Set;
 } else {
-	this.Map = Map;
-	this.Set = Set;
+	global.Map = Map;
+	global.Set = Set;
 }

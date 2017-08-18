@@ -1,6 +1,6 @@
 {
   "name": "@riim/map-set-polyfill",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Riim/map-set-polyfill/issues"
   },
-  "homepage": "https://github.com/Riim/map-set-polyfill#readme"
+  "homepage": "https://github.com/Riim/map-set-polyfill#readme",
+  "dependencies": {
+    "@riim/symbol-polyfill": "^1.0.0"
+  }
 }
