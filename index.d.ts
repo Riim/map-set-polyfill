@@ -1,2 +1,2 @@
-export declare function Map(entries?: Array<Array<any, any>>): Map;
-export declare function Set(values?: Array<any>): Set;
+export let Map: MapConstructor;
+export let Set: SetConstructor;
