@@ -243,9 +243,9 @@ var Set = global.Set;
 
 if (!Set || Set.toString().indexOf('[native code]') == -1 || !new Set([1]).size) {
 	Set = function Set(values) {
-		this._values = new Map(values.map(function(value) {
+		this._values = new Map(values ? values.map(function(value) {
 			return [value, value];
-		}));
+		}) : []);
 
 		this.size = 0;
 	};
