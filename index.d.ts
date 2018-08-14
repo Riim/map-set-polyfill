@@ -1,2 +1,2 @@
-export let Map: MapConstructor;
-export let Set: SetConstructor;
+export const Map: MapConstructor;
+export const Set: SetConstructor;
